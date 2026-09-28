@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Lenovo/OneDrive/Documents/nhs_waiting_times.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="24875"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="nhs_waiting_times" custom_title="0" dock_id="1" table="4,17:mainnhs_waiting_times"/><dock_state state="000000ff00000000fd00000001000000020000015c000002aefc0100000001fb000000160064006f0063006b00420072006f007700730065003101000000000000015c0000015c00ffffff0000015c0000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="nhs_waiting_times" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="117"/><column index="2" value="149"/><column index="3" value="300"/><column index="4" value="109"/><column index="5" value="300"/><column index="6" value="181"/><column index="7" value="300"/><column index="8" value="141"/><column index="9" value="300"/><column index="10" value="86"/><column index="11" value="156"/><column index="12" value="148"/><column index="13" value="265"/><column index="14" value="151"/><column index="15" value="151"/><column index="16" value="151"/><column index="17" value="151"/><column index="18" value="151"/><column index="19" value="151"/><column index="20" value="151"/><column index="21" value="151"/><column index="22" value="151"/><column index="23" value="151"/><column index="24" value="151"/><column index="25" value="151"/><column index="26" value="151"/><column index="27" value="151"/><column index="28" value="151"/><column index="29" value="151"/><column index="30" value="151"/><column index="31" value="151"/><column index="32" value="151"/><column index="33" value="151"/><column index="34" value="151"/><column index="35" value="151"/><column index="36" value="151"/><column index="37" value="151"/><column index="38" value="151"/><column index="39" value="151"/><column index="40" value="151"/><column index="41" value="151"/><column index="42" value="151"/><column index="43" value="151"/><column index="44" value="151"/><column index="45" value="151"/><column index="46" value="151"/><column index="47" value="151"/><column index="48" value="151"/><column index="49" value="151"/><column index="50" value="151"/><column index="51" value="151"/><column index="52" value="151"/><column index="53" value="151"/><column index="54" value="151"/><column index="55" value="151"/><column index="56" value="151"/><column index="57" value="151"/><column index="58" value="151"/><column index="59" value="151"/><column index="60" value="151"/><column index="61" value="151"/><column index="62" value="151"/><column index="63" value="151"/><column index="64" value="151"/><column index="65" value="151"/><column index="66" value="151"/><column index="67" value="151"/><column index="68" value="151"/><column index="69" value="151"/><column index="70" value="151"/><column index="71" value="151"/><column index="72" value="151"/><column index="73" value="151"/><column index="74" value="151"/><column index="75" value="151"/><column index="76" value="151"/><column index="77" value="151"/><column index="78" value="151"/><column index="79" value="151"/><column index="80" value="151"/><column index="81" value="151"/><column index="82" value="151"/><column index="83" value="151"/><column index="84" value="151"/><column index="85" value="151"/><column index="86" value="151"/><column index="87" value="151"/><column index="88" value="151"/><column index="89" value="151"/><column index="90" value="151"/><column index="91" value="151"/><column index="92" value="151"/><column index="93" value="151"/><column index="94" value="151"/><column index="95" value="151"/><column index="96" value="151"/><column index="97" value="151"/><column index="98" value="151"/><column index="99" value="151"/><column index="100" value="151"/><column index="101" value="151"/><column index="102" value="151"/><column index="103" value="151"/><column index="104" value="151"/><column index="105" value="151"/><column index="106" value="151"/><column index="107" value="151"/><column index="108" value="151"/><column index="109" value="151"/><column index="110" value="151"/><column index="111" value="151"/><column index="112" value="151"/><column index="113" value="158"/><column index="114" value="165"/><column index="115" value="165"/><column index="116" value="165"/><column index="117" value="165"/><column index="118" value="124"/><column index="119" value="39"/><column index="120" value="225"/><column index="121" value="54"/><column index="122" value="102"/><column index="123" value="102"/><column index="124" value="109"/><column index="125" value="46"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">SELECT COUNT(*) AS row_count
+FROM nhs_waiting_times;
+SELECT
+    Month,
+    COUNT(*) AS rows
+FROM nhs_waiting_times
+GROUP BY Month
+ORDER BY
+    CASE Month
+        WHEN 'April' THEN 1
+        WHEN 'May' THEN 2
+        WHEN 'June' THEN 3
+        WHEN 'July' THEN 4
+        WHEN 'August' THEN 5
+        WHEN 'September' THEN 6
+        WHEN 'October' THEN 7
+        WHEN 'November' THEN 8
+        WHEN 'December' THEN 9
+        WHEN 'January' THEN 10
+        WHEN 'February' THEN 11
+        WHEN 'March' THEN 12
+    END;
+	SELECT
+    SUM(&quot;Total All&quot;) AS total_incomplete_pathways
+FROM nhs_waiting_times;
+SELECT
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+    SUM(Waiting_52_plus) AS waiting_52_plus,
+    SUM(Waiting_104_plus) AS waiting_104_plus
+FROM nhs_waiting_times;
+SELECT
+    ROUND(
+        100.0 * SUM(Waiting_18_plus) / SUM(&quot;Total All&quot;),
+        2
+    ) AS pct_18_plus,
+
+    ROUND(
+        100.0 * SUM(Waiting_52_plus) / SUM(&quot;Total All&quot;),
+        2
+    ) AS pct_52_plus,
+
+    ROUND(
+        100.0 * SUM(Waiting_104_plus) / SUM(&quot;Total All&quot;),
+        2
+    ) AS pct_104_plus
+FROM nhs_waiting_times;
+SELECT
+    ROUND(
+        100.0 * SUM(Waiting_18_plus) / SUM(&quot;Total All&quot;),
+        2
+    ) AS pct_18_plus,
+
+    ROUND(
+        100.0 * SUM(Waiting_52_plus) / SUM(&quot;Total All&quot;),
+        2
+    ) AS pct_52_plus,
+
+    ROUND(
+        100.0 * SUM(Waiting_104_plus) / SUM(&quot;Total All&quot;),
+        2
+    ) AS pct_104_plus
+FROM nhs_waiting_times;
+SELECT
+    Month,
+    SUM(&quot;Total All&quot;) AS total_waiting,
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+    SUM(Waiting_52_plus) AS waiting_52_plus,
+    SUM(Waiting_104_plus) AS waiting_104_plus
+FROM nhs_waiting_times
+GROUP BY Month
+ORDER BY
+    CASE Month
+        WHEN 'April' THEN 1
+        WHEN 'May' THEN 2
+        WHEN 'June' THEN 3
+        WHEN 'July' THEN 4
+        WHEN 'August' THEN 5
+        WHEN 'September' THEN 6
+        WHEN 'October' THEN 7
+        WHEN 'November' THEN 8
+        WHEN 'December' THEN 9
+        WHEN 'January' THEN 10
+        WHEN 'February' THEN 11
+        WHEN 'March' THEN 12
+    END; 
+	SELECT
+    &quot;Treatment Function Name&quot; AS specialty,
+    SUM(&quot;Total All&quot;) AS total_waiting,
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+    SUM(Waiting_52_plus) AS waiting_52_plus
+FROM nhs_waiting_times
+GROUP BY &quot;Treatment Function Name&quot;
+ORDER BY total_waiting DESC
+LIMIT 10; 
+SELECT
+    &quot;Treatment Function Name&quot; AS specialty,
+    SUM(Waiting_52_plus) AS waiting_52_plus
+FROM nhs_waiting_times
+GROUP BY &quot;Treatment Function Name&quot;
+ORDER BY waiting_52_plus DESC
+LIMIT 10;
+SELECT
+    &quot;Provider Org Name&quot; AS provider,
+    SUM(&quot;Total All&quot;) AS total_waiting,
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+    SUM(Waiting_52_plus) AS waiting_52_plus
+FROM nhs_waiting_times
+GROUP BY &quot;Provider Org Name&quot;
+ORDER BY total_waiting DESC
+LIMIT 10;
+SELECT
+    &quot;Provider Org Name&quot; AS provider,
+    SUM(Waiting_52_plus) AS waiting_52_plus
+FROM nhs_waiting_times
+GROUP BY &quot;Provider Org Name&quot;
+ORDER BY waiting_52_plus DESC
+LIMIT 10;
+SELECT
+    Month,
+    &quot;Treatment Function Name&quot; AS specialty,
+    SUM(&quot;Total All&quot;) AS total_waiting
+FROM nhs_waiting_times
+GROUP BY
+    Month,
+    &quot;Treatment Function Name&quot;
+ORDER BY
+    Month,
+    total_waiting DESC;
+SELECT
+    &quot;Treatment Function Name&quot; AS specialty,
+
+    SUM(&quot;Total All&quot;) AS total_waiting,
+
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+
+    ROUND(
+        100.0 * SUM(Waiting_18_plus) / NULLIF(SUM(&quot;Total All&quot;), 0),
+        2
+    ) AS pct_18_plus
+
+FROM nhs_waiting_times
+
+GROUP BY &quot;Treatment Function Name&quot;
+
+ORDER BY pct_18_plus DESC;
+SELECT
+    &quot;Provider Org Name&quot; AS provider,
+    SUM(&quot;Total All&quot;) AS total_waiting,
+    SUM(Waiting_52_plus) AS waiting_52_plus,
+
+    ROUND(
+        100.0 * SUM(Waiting_52_plus)
+        / NULLIF(SUM(&quot;Total All&quot;), 0),
+        2
+    ) AS pct_52_plus
+
+FROM nhs_waiting_times
+
+GROUP BY &quot;Provider Org Name&quot;
+
+HAVING SUM(&quot;Total All&quot;) &gt;= 1000
+
+ORDER BY pct_52_plus DESC;
+CREATE TABLE specialty_summary AS
+
+SELECT
+    &quot;Treatment Function Name&quot; AS specialty,
+
+    SUM(&quot;Total All&quot;) AS total_waiting,
+
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+
+    SUM(Waiting_52_plus) AS waiting_52_plus,
+
+    SUM(Waiting_104_plus) AS waiting_104_plus,
+
+    ROUND(
+        100.0 * SUM(Waiting_18_plus)
+        / NULLIF(SUM(&quot;Total All&quot;), 0),
+        2
+    ) AS pct_18_plus,
+
+    ROUND(
+        100.0 * SUM(Waiting_52_plus)
+        / NULLIF(SUM(&quot;Total All&quot;), 0),
+        2
+    ) AS pct_52_plus
+
+FROM nhs_waiting_times
+GROUP BY &quot;Treatment Function Name&quot;;
+SELECT *
+FROM specialty_summary
+ORDER BY total_waiting DESC;
+SELECT *
+FROM provider_summary
+ORDER BY total_waiting DESC;
+CREATE TABLE monthly_summary AS
+
+SELECT
+    Month,
+
+    SUM(&quot;Total All&quot;) AS total_waiting,
+
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+
+    SUM(Waiting_52_plus) AS waiting_52_plus,
+
+    SUM(Waiting_104_plus) AS waiting_104_plus
+
+FROM nhs_waiting_times
+
+GROUP BY Month;
+SELECT *
+FROM monthly_summary;
+SELECT
+    &quot;Treatment Function Name&quot; AS specialty,
+    SUM(&quot;Total All&quot;) AS total_waiting,
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+    SUM(Waiting_52_plus) AS waiting_52_plus,
+    ROUND(
+        100.0 * SUM(Waiting_52_plus)
+        / NULLIF(SUM(&quot;Total All&quot;), 0),
+        2
+    ) AS pct_52_plus
+FROM nhs_waiting_times
+GROUP BY &quot;Treatment Function Name&quot;
+ORDER BY total_waiting DESC
+LIMIT 10;
+SELECT
+    &quot;Treatment Function Name&quot; AS specialty,
+    SUM(Waiting_52_plus) AS waiting_52_plus
+FROM nhs_waiting_times
+GROUP BY &quot;Treatment Function Name&quot;
+ORDER BY waiting_52_plus DESC
+LIMIT 10;
+SELECT
+    &quot;Provider Org Name&quot; AS provider,
+    SUM(&quot;Total All&quot;) AS total_waiting,
+    SUM(Waiting_18_plus) AS waiting_18_plus,
+    SUM(Waiting_52_plus) AS waiting_52_plus,
+    ROUND(
+        100.0 * SUM(Waiting_52_plus)
+        / NULLIF(SUM(&quot;Total All&quot;), 0),
+        2
+    ) AS pct_52_plus
+FROM nhs_waiting_times
+GROUP BY &quot;Provider Org Name&quot;
+ORDER BY total_waiting DESC
+LIMIT 10;
+SELECT
+    &quot;Provider Org Name&quot; AS provider,
+    SUM(&quot;Total All&quot;) AS total_waiting,
+    SUM(Waiting_52_plus) AS waiting_52_plus,
+    ROUND(
+        100.0 * SUM(Waiting_52_plus)
+        / NULLIF(SUM(&quot;Total All&quot;), 0),
+        2
+    ) AS pct_52_plus
+FROM nhs_waiting_times
+GROUP BY &quot;Provider Org Name&quot;
+HAVING SUM(&quot;Total All&quot;) &gt;= 1000
+ORDER BY pct_52_plus DESC
+LIMIT 10;</sql><sql name="SQL 2*">SELECT
+    &quot;Treatment Function Code&quot;,
+    &quot;Treatment Function Name&quot;,
+    COUNT(*) AS rows,
+    SUM(&quot;Total All&quot;) AS total_waiting
+FROM nhs_waiting_times
+GROUP BY
+    &quot;Treatment Function Code&quot;,
+    &quot;Treatment Function Name&quot;
+ORDER BY total_waiting DESC
+LIMIT 20;
+SELECT
+    Month,
+    COUNT(*) AS rows,
+    COUNT(DISTINCT &quot;Provider Org Code&quot;) AS providers,
+    COUNT(DISTINCT &quot;Treatment Function Code&quot;) AS treatment_functions,
+    SUM(&quot;Total All&quot;) AS total_waiting
+FROM nhs_waiting_times
+GROUP BY Month
+ORDER BY
+    CASE Month
+        WHEN 'April' THEN 1
+        WHEN 'May' THEN 2
+        WHEN 'June' THEN 3
+        WHEN 'July' THEN 4
+        WHEN 'August' THEN 5
+        WHEN 'September' THEN 6
+        WHEN 'October' THEN 7
+        WHEN 'November' THEN 8
+        WHEN 'December' THEN 9
+        WHEN 'January' THEN 10
+        WHEN 'February' THEN 11
+        WHEN 'March' THEN 12
+    END;</sql><sql name="SQL 3*">SELECT
+    &quot;Provider Org Code&quot;,
+    &quot;Provider Org Name&quot;,
+    COUNT(*) AS rows,
+    SUM(&quot;Total All&quot;) AS total_waiting
+FROM nhs_waiting_times
+WHERE Month = 'February'
+GROUP BY
+    &quot;Provider Org Code&quot;,
+    &quot;Provider Org Name&quot;
+ORDER BY total_waiting DESC
+LIMIT 20;</sql><sql name="SQL 4*">SELECT
+    Month,
+    &quot;RTT Part Type&quot;,
+    COUNT(*) AS rows,
+    COUNT(DISTINCT &quot;Provider Org Code&quot;) AS providers,
+    SUM(&quot;Total All&quot;) AS total_waiting
+FROM nhs_waiting_times
+GROUP BY
+    Month,
+    &quot;RTT Part Type&quot;
+ORDER BY
+    CASE Month
+        WHEN 'April' THEN 1
+        WHEN 'May' THEN 2
+        WHEN 'June' THEN 3
+        WHEN 'July' THEN 4
+        WHEN 'August' THEN 5
+        WHEN 'September' THEN 6
+        WHEN 'October' THEN 7
+        WHEN 'November' THEN 8
+        WHEN 'December' THEN 9
+        WHEN 'January' THEN 10
+        WHEN 'February' THEN 11
+        WHEN 'March' THEN 12
+    END,
+    &quot;RTT Part Type&quot;;</sql><current_tab id="3"/></tab_sql></sqlb_project>
